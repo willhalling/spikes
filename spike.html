@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Spike - Onboarding</title>
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -20,17 +19,24 @@ var x = document.getElementById("demo");
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, function(error) {
-      if (error.code == error.PERMISSION_DENIED) {
-        x.innerHTML = error.message;
-      }
+      debugger
       console.log('error', error)
+    });
+    navigator.geolocation.watchPosition(function(position) {
+      console.log("i'm tracking you!");
+    },
+    function(error) {
+      if (error.code == error.PERMISSION_DENIED)
+        console.log("you denied me :-(");
     });
   } else { 
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
 
+
 function showPosition(position) {
+  debugger
   x.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude;
 }
