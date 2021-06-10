@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spike - Word Animation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
+    <style type="text/css">
+      
+      body {
+        background: white;
+        font-family: 'Raleway', sans-serif;
+        font-size: 54px;
+        line-height: 60px;
+        color: black;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .shape-inline {
+        display: inline-block;
+        position: relative;
+      }
+
+      .shape-inline svg {
+        position: absolute;
+        z-index: 1;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        width: 202%;
+        transform: translate(-23%,-36%);
+      }
+
+      p {
+        opacity: 0;
+        transition: opacity 1s ease-in;
+      }
+
+      p.active {
+        opacity: 1;
+      }
+
+      @keyframes dash {
+        from {
+          stroke-dashoffset: 375;    
+        }
+        to {
+          stroke-dashoffset: 0;    
+        }
+      } 
+
+      .circle path {
+        stroke-dasharray: 375;
+        stroke-dashoffset: 0;  
+        fill: white;
+        opacity: 0;
+      }
+
+      .circle.active path {
+        opacity: 1;
+        animation: dash .5s ease-in forwards;
+      }
+
+    </style>
+</head>
+<body>
+
+<p class="text">
+
+   the job thats right for 
+
+<span class="shape-inline">
+<svg class="circle" width="207" height="251" viewBox="0 0 207 251" fill="black" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+      <mask id="mask-start">
+<path d="M90.0046 84.5951C86.3867 85.0912 78.467 86.3152 70.019 88.96C54.5353 93.8072 36.5714 114.431 36.616 128.91C37.982 152.221 51.3095 158.07 65.4997 162.432C82.5524 167.772 111.645 168.031 137.689 159.878C142.85 158.262 151.338 151.158 155.903 147.201C156.502 146.789 157.031 146.53 157.731 146.311C157.968 146.236 158.715 146.321 158.715 146.321C158.715 146.321 160.027 146.847 160.167 147.758C160.261 148.365 160.352 148.955 160.208 149.637C160.01 150.899 158.021 153.445 157.523 153.953C157.523 153.953 153.045 159.25 151.788 160.459C149.559 162.602 149.298 163.431 146.851 165.151C146.851 165.151 146.851 165.151 145.961 165.748C145.961 165.748 145.441 166.099 145.07 166.345C139.712 169.915 134.417 172.191 129.956 173.588C127.844 174.249 125.732 174.91 124.048 175.119C77.3213 184.726 34.5024 168.587 29.3302 135.005C24.1997 101.692 56.3164 83.4695 76.7236 77.0808C111.453 66.2085 162.12 75.8065 177.387 120.673C178.64 124.047 179.434 127.582 179.94 130.871C181.556 141.362 180.447 151.77 179.272 155.285C178.566 157.079 178.005 158.192 177.054 158.49C176.117 158.783 175.042 158.182 174.289 156.526C171.946 155.686 170.877 153.51 170.415 150.508C169.768 146.308 170.111 140.543 169.143 134.251C168.633 130.945 167.889 127.731 166.399 124.432C153.116 95.5982 126.349 81.0671 90.0046 84.5951Z"  />
+      </mask>
+  </defs>
+  <path mask="url(#mask-start)" d="M155.9,147.2s-23.31,48.08-111.1,14.44c0,0-46.1-73.64,55.55-82.64,0,0,82.23-6,73.94,77.53" fill="white" stroke="#0054A6" stroke-width="20" />
+</svg>
+you
+</span>
+
+
+<script type="text/javascript">
+  
+var shape = document.querySelector(".circle");
+var text = document.querySelector(".text");
+
+window.addEventListener("load", function() {
+    setTimeout(function(){
+      text.classList.add("active");
+    }, 500);
+    setTimeout(function(){
+      shape.classList.add("active");
+    }, 1500);
+
+});
+
+</script>
+
+</body>
+</html>
+
